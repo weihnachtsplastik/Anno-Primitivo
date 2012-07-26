@@ -16,7 +16,7 @@ public class GameMouseListener implements MouseListener
 	}
 
 	/**
-	 * Gibt zurück, ob die Maus über dem Fenster ist oder nicht.
+	 * Gibt zurï¿½ck, ob die Maus ï¿½ber dem Fenster ist oder nicht.
 	 */
 	public boolean isMouseEntered()
 	{
@@ -30,8 +30,7 @@ public class GameMouseListener implements MouseListener
 		{
 			int x = event.getX();
 			int y = event.getY();
-			x -= 3; // Fensterrahmen unter Windows
-			y -= 25; // Fensterrahmen unter Windows
+
 			anno.getGuiManager().fireClick(x, y);
 		}
 	}

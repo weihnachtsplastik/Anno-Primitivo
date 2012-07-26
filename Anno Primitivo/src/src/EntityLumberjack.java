@@ -11,15 +11,15 @@ public class EntityLumberjack extends Entity
 	}
 	
 	@Override
-	public void updateEntity()
+	public void paint(Graphics g, float zoom)
 	{
-		
+		g.setColor(Color.blue);
+		g.fillOval((int) (x * 32 * zoom), (int) (y * 32 * zoom), (int) (16 * zoom), (int) (16 * zoom));
 	}
 	
 	@Override
-	public void paint(Graphics g)
+	public void updateEntity()
 	{
-		g.setColor(Color.blue);
-		g.fillOval(x, y, 5, 5);
+		x += 0.03125;
 	}
 }

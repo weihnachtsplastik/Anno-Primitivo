@@ -1,43 +1,38 @@
 package main;
 
 import java.awt.Graphics;
-import src.AnnoRunnable;
 import src.GamePanel;
 import src.GameWindow;
-import src.GuiInterface;
 import src.GuiManager;
-import src.GuiScreen;
+import src.GuiRender;
 import src.TextureManager;
 import src.World;
 
 public class Anno
 {	
-	private Thread animator;
+	private Thread threadAnimate;
+	private Thread threadUpdate;
 	private GamePanel gamePanel;
 	private GameWindow gameWindow;
 	private GuiManager guiMngr;
 	private boolean paused;
-	private boolean running;
+	private boolean animRunning;
+	private boolean updtRunning;
 	private TextureManager texMngr;
 	private World world;
 
 	public Anno()
 	{
-		running = false;
+		animRunning = false;
+		updtRunning = false;
 		paused = false;
-		world = new World();
+		world = new World(this);
 		texMngr = new TextureManager();
-		gameWindow = new GameWindow(this, 806, 604, "Anno Primitivo");
+		gameWindow = new GameWindow(this, 800, 600, "Anno Primitivo");
 		gamePanel = new GamePanel();
 		gameWindow.add(gamePanel);
 		guiMngr = new GuiManager(this);
-		addGuis();
-	}
-
-	private void addGuis()
-	{
-		guiMngr.openGui(new GuiScreen());
-		guiMngr.openGui(new GuiInterface());
+		guiMngr.openGui(new GuiRender());
 	}
 
 	private void gameRender()
@@ -66,8 +61,8 @@ public class Anno
 	}
 
 	/**
-	 * Gibt das Game Panel zurück.<br>
-	 * Dies ist die Komponente, auf der das Bild entsteht. Es hat also die Größe, die das gerenderte Bild maximal haben darf.
+	 * Gibt das Game Panel zurï¿½ck.<br>
+	 * Dies ist die Komponente, auf der das Bild entsteht. Es hat also die Grï¿½ï¿½e, die das gerenderte Bild maximal haben darf.
 	 */
 	public GamePanel getGamePanel()
 	{
@@ -75,8 +70,8 @@ public class Anno
 	}
 
 	/**
-	 * Gibt den Gui Manager zurück.<br>
-	 * Dieser verwaltet alle Guis. Er ist vorallem dann notwendig, wenn eine neue Gui geöffnet oder eine alte geschlossen werden soll.
+	 * Gibt den Gui Manager zurï¿½ck.<br>
+	 * Dieser verwaltet alle Guis. Er ist vorallem dann notwendig, wenn eine neue Gui geï¿½ffnet oder eine alte geschlossen werden soll.
 	 */
 	public GuiManager getGuiManager()
 	{
@@ -84,8 +79,8 @@ public class Anno
 	}
 
 	/**
-	 * Gibt den Texture Manager zurück.<br>
-	 * Dieser verwaltet alle Texturen. Dies ist sehr hilfreich, wenn man eine Textur, die auf der Festplatte liegt zeichnen möchte. Hierzu muss die das Bild im Ordner "res" liegen. Außerdem speichert er einmal geladene Texturen im Arberitsspeicher ab, sodass diese beim nächsten mal nicht mehr von der Festplatte geladen werden muss, was wiederum den Spielverlauf verschnellert.
+	 * Gibt den Texture Manager zurï¿½ck.<br>
+	 * Dieser verwaltet alle Texturen. Dies ist sehr hilfreich, wenn man eine Textur, die auf der Festplatte liegt zeichnen mï¿½chte. Hierzu muss die das Bild im Ordner "res" liegen. Auï¿½erdem speichert er einmal geladene Texturen im Arberitsspeicher ab, sodass diese beim nï¿½chsten mal nicht mehr von der Festplatte geladen werden muss, was wiederum den Spielverlauf verschnellert.
 	 */
 	public TextureManager getTextureManager()
 	{
@@ -93,8 +88,8 @@ public class Anno
 	}
 
 	/**
-	 * Gibt die aktuelle Welt zurück.<br>
-	 * Hier ist alles über die Welt gespeichert. Die Blöcke und deren Inhalte, wenn diese vorhanden sind, und die Items, die schon eingesammelt wurden.
+	 * Gibt die aktuelle Welt zurï¿½ck.<br>
+	 * Hier ist alles ï¿½ber die Welt gespeichert. Die Blï¿½cke und deren Inhalte, wenn diese vorhanden sind, und die Items, die schon eingesammelt wurden.
 	 */
 	public World getWorld()
 	{
@@ -102,7 +97,7 @@ public class Anno
 	}
 
 	/**
-	 * Gibt zurück, ob das Spiel gerade pausiert ist.
+	 * Gibt zurï¿½ck, ob das Spiel gerade pausiert ist.
 	 */
 	public boolean isGamePaused()
 	{
@@ -116,16 +111,36 @@ public class Anno
 	{
 		paused = true;
 	}
+	
+	/**
+	 * Berechnet alle ï¿½nderungen.
+	 */
+	public void doTick()
+	{
+		updtRunning = true;
+		while(updtRunning)
+		{
+			gameUpdate();
+			try
+			{
+				Thread.sleep(20L);
+			}
+			catch(InterruptedException exeption)
+			{
+				exeption.printStackTrace();
+			}
+		}
+		System.exit(0);
+	}
 
 	/**
-	 * Lässt das Spiel laufen.
+	 * Zeichnet das Spiel.
 	 */
 	public void run()
 	{
-		running = true;
-		while(running)
+		animRunning = true;
+		while(animRunning)
 		{
-			gameUpdate();
 			gameRender();
 			gameRepaint();
 			try
@@ -145,12 +160,16 @@ public class Anno
 	 */
 	public void startGame()
 	{
-		if(animator == null || !running)
+		if(threadUpdate == null || !updtRunning)
 		{
-			animator = new Thread(new AnnoRunnable(this));
-			world.genWorld();
-			animator.start();
+			threadUpdate = new Thread(new AnnoRunnableUpdate(this));
 		}
+		if(threadAnimate == null || !animRunning)
+		{
+			threadAnimate = new Thread(new AnnoRunnableAnimate(this));
+			threadAnimate.start();
+		}
+		world.genWorld();
 	}
 
 	/**
@@ -158,11 +177,12 @@ public class Anno
 	 */
 	public void stopGame()
 	{
-		running = false;
+		animRunning = false;
+		updtRunning = false;
 	}
 
 	/**
-	 * Lässt das Spiel weiter laufen.
+	 * Lï¿½sst das Spiel weiter laufen.
 	 */
 	public void unpauseGame()
 	{

@@ -26,6 +26,22 @@ public class Block
 	}
 
 	/**
+	 * Gibt die Höhe in Pixeln zurück.
+	 */
+	public int getPixelHeight()
+	{
+		return 32;
+	}
+
+	/**
+	 * Gibt die Breite in Pixeln zurück.
+	 */
+	public int getPixelWidth()
+	{
+		return 32;
+	}
+
+	/**
 	 * Wird ausgelöst, wenn auf den Block geklickt wird.
 	 * 
 	 * @param x

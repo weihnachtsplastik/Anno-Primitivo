@@ -7,11 +7,6 @@ public class BlockBase extends Block
 		super(100);
 	}
 	
-	public int getDropID()
-	{
-		return 0;
-	}
-	
 	public void onClick(int x, int y, World world)
 	{
 		

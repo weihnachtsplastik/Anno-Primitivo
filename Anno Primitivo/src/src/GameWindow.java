@@ -16,6 +16,7 @@ public class GameWindow extends JFrame
 		setIconImage(anno.getTextureManager().getTexture("/icon.ico"));
 		addKeyListener(new GameKeyListener(anno));
 		addMouseListener(new GameMouseListener(anno));
+		addMouseWheelListener(new GameMouseWheelListener(anno));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}

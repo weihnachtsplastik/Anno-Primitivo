@@ -49,6 +49,14 @@ public class Chunk
 	}
 
 	/**
+	 * Gibt die größe des Chunks zurück.
+	 */
+	public static int getSize()
+	{
+		return 16;
+	}
+
+	/**
 	 * Setzt den Block an der angegebenen Position auf dem angegenbenen Block.
 	 * 
 	 * @param coordinates

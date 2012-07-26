@@ -1,9 +1,11 @@
 #ID's for Anno Primitivo
 
 #Block ID's:
+-1	empty
 0	grass
 1	forrest
 2	rock
+100	base
 
 #Item ID's:
 0	money

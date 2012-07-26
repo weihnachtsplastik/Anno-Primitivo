@@ -50,11 +50,11 @@ public class EntityManager
 	 * @param g
 	 *            Graphics zum Zeichnen der Entitys
 	 */
-	public void paintEntitys(Graphics g)
+	public void paintEntitys(Graphics g, float zoom)
 	{
 		for(int i = 0; i < entityList.size(); i++)
 		{
-			entityList.get(i).paint(g);
+			entityList.get(i).paint(g, zoom);
 		}
 	}
 

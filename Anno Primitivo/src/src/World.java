@@ -1,16 +1,26 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.List;
+import main.Anno;
+
 public class World
 {
+	private Anno anno;
 	private WorldData worldData;
-	private Block worldMap[][];
 	private EntityManager entityMngr;
+	private List<Chunk> chunkList;
+	private final int chunkCountWidth;
+	private final int chunkCountHeight;
 
-	public World()
+	public World(Anno anno)
 	{
-		worldMap = new Block[25][17];
+		this.anno = anno;
 		worldData = new WorldData();
 		entityMngr = new EntityManager();
+		chunkList = new ArrayList<Chunk>();
+		chunkCountWidth = 32;
+		chunkCountHeight = 32;
 	}
 
 	/**
@@ -27,28 +37,42 @@ public class World
 	 */
 	public void genWorld()
 	{
-		for(int i = 0; i < worldMap.length; i++)
+		GuiRender gui = (GuiRender) anno.getGuiManager().getGui(GuiRender.class);
+		gui.setPorgressBarMaximum(chunkCountHeight * Chunk.getSize());
+		for(int y = 0; y < chunkCountHeight; y++)
 		{
-			for(int j = 0; j < worldMap[i].length; j++)
+			for(int x = 0; x < chunkCountWidth; x++)
+			{
+				chunkList.add(new Chunk(x, y));
+			}
+		}
+
+		for(int i = 0; i < chunkCountHeight * Chunk.getSize(); i++)
+		{
+			for(int j = 0; j < chunkCountWidth * Chunk.getSize(); j++)
 			{
 				int id = (int) (Math.random() * 8);
 				if(id >= 0 && id <= 4)
 				{
-					id = 0;
+					setBlock(i, j, new BlockGrass());
 				}
 				else if(id >= 5 && id <= 6)
 				{
-					id = 1;
+					setBlock(i, j, new BlockForest());
 				}
 				else
 				{
-					id = 2;
+					setBlock(i, j, new BlockRock());
 				}
-				worldMap[i][j] = new Block(id);
 			}
+			gui.setProgressBarPosition(i);
 		}
-		worldMap[12][8] = new Block(3);
-		entityMngr.addEntity(new EntityLumberjack(1));
+		setBlock(12, 8, new BlockBase());
+		EntityLumberjack entity = new EntityLumberjack(1);
+		entity.setPosition(12.0F, 8.0F);
+		entityMngr.addEntity(entity);
+		gui.setProgressBarPosition(gui.getPorgressBarMaximum());
+		gui.close();
 	}
 
 	/**
@@ -62,7 +86,7 @@ public class World
 	 */
 	public Block getBlock(int x, int y)
 	{
-		return worldMap[x][y];
+		return getChunk(getInChunkGrid(x), getInChunkGrid(y)).getBlock(x % Chunk.getSize(), y % Chunk.getSize());
 	}
 
 	/**
@@ -76,7 +100,41 @@ public class World
 	 */
 	public int getBlockID(int x, int y)
 	{
-		return worldMap[x][y].getBlockID();
+		return getBlock(x, y).getBlockID();
+	}
+
+	/**
+	 * Setzt den angegebenen Block auf die angegebene Position in der Welt.
+	 * 
+	 * @param x
+	 *            die X-Position
+	 * @param y
+	 *            die Y-Position
+	 * @param block
+	 *            der Block, der gesetzt werden soll
+	 */
+	public void setBlock(int x, int y, Block block)
+	{
+		getChunk(getInChunkGrid(x), getInChunkGrid(y)).setBlock(x % Chunk.getSize(), y % Chunk.getSize(), block);
+	}
+
+	private int getInChunkGrid(int i)
+	{
+		i -= i % Chunk.getSize();
+		return i / Chunk.getSize();
+	}
+
+	private Chunk getChunk(int x, int y)
+	{
+		for(int i = 0; i < chunkList.size(); i++)
+		{
+			Chunk chunk = chunkList.get(i);
+			if(chunk.getCoordinates().x == x && chunk.getCoordinates().y == y)
+			{
+				return chunk;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -99,7 +157,7 @@ public class World
 	 */
 	public void onClick(int x, int y)
 	{
-		worldMap[x][y].onClick(x, y, this);
+		getBlock(x, y).onClick(x, y, this);
 	}
 
 	/**

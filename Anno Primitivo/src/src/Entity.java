@@ -7,8 +7,8 @@ public class Entity
 	protected int health;
 	protected int id;
 	protected Inventory inv;
-	protected int x;
-	protected int y;
+	protected float x;
+	protected float y;
 
 	public Entity(int id)
 	{
@@ -58,17 +58,9 @@ public class Entity
 	}
 
 	/**
-	 * Gibt die aktuelle Position des Entitys zurück.
-	 */
-	public Coordinates getPosition()
-	{
-		return new Coordinates(x, y);
-	}
-
-	/**
 	 * Gibt die aktuelle X-Position des Entitys zurück.
 	 */
-	public int getX()
+	public float getX()
 	{
 		return x;
 	}
@@ -76,7 +68,7 @@ public class Entity
 	/**
 	 * Gibt die aktuelle Y-Position des Entitys zurück.
 	 */
-	public int getY()
+	public float getY()
 	{
 		return y;
 	}
@@ -87,7 +79,7 @@ public class Entity
 	 * @param g
 	 *            Graphics zum Zeichnen des Entitys
 	 */
-	public void paint(Graphics g)
+	public void paint(Graphics g, float zoom)
 	{
 		
 	}
@@ -106,24 +98,12 @@ public class Entity
 	/**
 	 * Setzt die Postion des Entitys auf die angegeben Position.
 	 * 
-	 * @param coordinates
-	 *            die Postition, auf die der Entity gesetzt werden soll
-	 */
-	public void setPosition(Coordinates coordinates)
-	{
-		x = coordinates.x;
-		y = coordinates.y;
-	}
-
-	/**
-	 * Setzt die Postion des Entitys auf die angegeben Position.
-	 * 
 	 * @param x
 	 *            die X-Position
 	 * @param y
 	 *            die Y-Position
 	 */
-	public void setPosition(int x, int y)
+	public void setPosition(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
@@ -135,7 +115,7 @@ public class Entity
 	 * @param x
 	 *            die X-Position
 	 */
-	public void setX(int x)
+	public void setX(float x)
 	{
 		this.x = x;
 	}
@@ -146,7 +126,7 @@ public class Entity
 	 * @param y
 	 *            die Y-Position
 	 */
-	public void setY(int y)
+	public void setY(float y)
 	{
 		this.y = y;
 	}

@@ -6,12 +6,28 @@ import javax.swing.ImageIcon;
 
 public class TextureManager
 {
-	private HashMap<String, Image> map;
-	private String[] source = {"/grass.png", "/forest.png", "/rock.png", "/base.png"};
+	private HashMap<String, Image> mapTextures;
+	private HashMap<Integer, String> mapID;
 
 	public TextureManager()
 	{
-		map = new HashMap<String, Image>();
+		mapTextures = new HashMap<String, Image>();
+		mapID = new HashMap<Integer, String>();
+		fillMap();
+	}
+	
+	private void fillMap()
+	{
+		//Blöcke
+		mapID.put(0, "/blocks/grass.png");
+		mapID.put(1, "/blocks/forest.png");
+		mapID.put(2, "/blocks/rock.png");
+		mapID.put(100, "/blocks/base.png");
+		
+		//Items
+		mapID.put(256, "/items/money.png");
+		mapID.put(257, "/items/wood.png");
+		mapID.put(258, "/items/stone.png");
 	}
 
 	/**
@@ -22,7 +38,7 @@ public class TextureManager
 	 */
 	public Image getTexture(int id)
 	{
-		return getTexture(source[id]);
+		return getTexture(mapID.get(id));
 	}
 
 	/**
@@ -33,12 +49,12 @@ public class TextureManager
 	 */
 	public Image getTexture(String src)
 	{
-		if(!map.containsKey(src))
+		if(!mapTextures.containsKey(src))
 		{
 			ImageIcon icon = new ImageIcon(getClass().getResource(src));
 			Image img = icon.getImage();
-			map.put(src, img);
+			mapTextures.put(src, img);
 		}
-		return map.get(src);
+		return mapTextures.get(src);
 	}
 }

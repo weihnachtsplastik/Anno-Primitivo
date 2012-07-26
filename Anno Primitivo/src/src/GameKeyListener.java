@@ -41,7 +41,7 @@ public class GameKeyListener implements KeyListener
 						anno.getGuiManager().closeGui(anno.getGuiManager().getGui(GuiPause.class));
 					}
 					break;
-				case KeyEvent.VK_B:
+				case 'b':
 					if(anno.getGuiManager().getGui(GuiBuiltMenu.class) == null)
 					{
 						anno.getGuiManager().openGui(new GuiBuiltMenu());

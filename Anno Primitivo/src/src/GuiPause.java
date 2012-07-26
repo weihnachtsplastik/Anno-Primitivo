@@ -40,16 +40,19 @@ public class GuiPause extends Gui
 
 		GuiButton guiButton;
 		controlList.clear();
-		guiButton = new GuiButton(0, "/MenuButton/back.png", x + width / 2 - 112, y + height / 2 - 80, 224, 32, this);
-		guiButton.setHoverTexture("/MenuButton/back_select.png");
+		guiButton = new GuiButton(0, "/gui/back.png", x + width / 2 - 112, y + height / 2 - 80, 224, 32, this);
+		guiButton.setHoverTexture("/gui/back_select.png");
+		guiButton.useTextures();
 		controlList.add(guiButton);
-		guiButton = new GuiButton(1, "/MenuButton/options.png", x + width / 2 - 112, y + height / 2 - 16, 224, 32, this);
-		guiButton.setHoverTexture("/MenuButton/options_select.png");
-		guiButton.setDisabledTexture("/MenuButton/options_disabled.png");
+		guiButton = new GuiButton(1, "/gui/options.png", x + width / 2 - 112, y + height / 2 - 16, 224, 32, this);
+		guiButton.setHoverTexture("/gui/options_select.png");
+		guiButton.setDisabledTexture("/gui/options_disabled.png");
+		guiButton.useTextures();
 		guiButton.setEnabled(false);
 		controlList.add(guiButton);
-		guiButton = new GuiButton(2, "/MenuButton/quit.png", x + width / 2 - 112, y + height / 2 + 48, 224, 32, this);
-		guiButton.setHoverTexture("/MenuButton/quit_select.png");
+		guiButton = new GuiButton(2, "/gui/quit.png", x + width / 2 - 112, y + height / 2 + 48, 224, 32, this);
+		guiButton.setHoverTexture("/gui/quit_select.png");
+		guiButton.useTextures();
 		controlList.add(guiButton);
 	}
 
