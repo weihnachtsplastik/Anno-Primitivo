@@ -1,0 +1,11 @@
+#ID's for Anno Primitivo
+
+#Block ID's:
+0	grass
+1	forrest
+2	rock
+
+#Item ID's:
+0	money
+1	wood
+2	stone
