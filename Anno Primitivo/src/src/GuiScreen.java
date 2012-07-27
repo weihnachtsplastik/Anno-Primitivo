@@ -27,6 +27,12 @@ public class GuiScreen extends Gui
 	@Override
 	public boolean onClick(int x, int y)
 	{
+		if(anno.getWorld().getBlockID( (int)(x/(32*zoom)) , (int)(y/(32*zoom)) ) < 100){
+			switch(anno.getCursor().getCursorID()){
+				case 101:
+					anno.getWorld().setBlock((int)(x/(32*zoom)),(int)(y/(32*zoom)), new BlockWay());break;
+			}
+		}
 		anno.getWorld().onClick(x / 32, y / 32);
 		return super.onClick(x, y);
 	}
@@ -107,5 +113,7 @@ public class GuiScreen extends Gui
 		{
 		}
 	}
+	
+	
 	
 }

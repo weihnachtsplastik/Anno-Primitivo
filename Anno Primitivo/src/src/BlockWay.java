@@ -3,9 +3,9 @@ package src;
 public class BlockWay extends Block
 {
 
-	public BlockWay(int id)
+	public BlockWay()
 	{
-		super(4);
+		super(101);
 		// TODO Auto-generated constructor stub
 	}
 

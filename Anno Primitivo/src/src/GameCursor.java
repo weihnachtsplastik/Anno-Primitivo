@@ -9,7 +9,7 @@ public class GameCursor
 	
 	private int x,y ;
 	
-	private int CursorID = 101;
+	private int CursorID = 255;
 	private Anno anno;
 	
 	public GameCursor(Anno anno){
@@ -48,13 +48,17 @@ public class GameCursor
 		
 		switch(CursorID){
 			case 101:
-				g.drawImage(anno.getTextureManager().getTexture(CursorID),x,y,(int)(32*zoom),(int)(32*zoom),null);
+				g.drawImage(anno.getTextureManager().getTexture(CursorID),x,y,(int)(32*zoom),(int)(32*zoom),null);break;
 			}
 
 	}
 	
 	public void setCursorID(int id){
 		CursorID = id;
+	}
+	
+	public int getCursorID(){
+		return CursorID;
 	}
 
 	
