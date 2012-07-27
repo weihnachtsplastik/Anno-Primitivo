@@ -23,9 +23,7 @@ public class GuiBuiltMenu extends Gui
 	@Override
 	public void onGuiOpen(){
 		controlList.clear();
-		GuiButton way = new GuiButton(0,"/block_icons/way_icons.png",x,y,32,32,this);
-		way.setHoverTexture("/block_icons/way_icons.png");
-		way.setDisabledTexture("/block_icons/way_icons.png");
+		GuiButton way = new GuiButton(0,"/block_icons/weg_Icon.png",10,10,32,32,this);
 		way.useTextures();
 		controlList.add(way);
 		
@@ -47,13 +45,14 @@ public class GuiBuiltMenu extends Gui
 	@Override
 	public boolean onClick(int x, int y)
 	{
-		
-		
 		if(!isOnGui(x, y))
 		{
 			close();
 		}
-		return super.onClick(x, y);
+		if( super.onClick(x, y) == false){
+			anno.getCursor().setCursorID(255);
+		}
+		return false;
 	}
 
 	@Override

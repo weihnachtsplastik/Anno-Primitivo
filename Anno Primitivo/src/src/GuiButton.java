@@ -18,6 +18,7 @@ public class GuiButton extends ActionObject
 		this.id = id;
 		this.title = title;
 		useTextures = false;
+		
 	}
 
 	public GuiButton(int id, String texture, int x, int y, int width, int height, Gui gui)
@@ -41,7 +42,7 @@ public class GuiButton extends ActionObject
 	}
 
 	/**
-	 * Gibt die ID des Gui Buttons zurück.
+	 * Gibt die ID des Gui Buttons zurï¿½ck.
 	 */
 	public int getID()
 	{
@@ -83,7 +84,7 @@ public class GuiButton extends ActionObject
 	{
 		if(useTextures)
 		{
-			g.drawImage(parentGui.anno.getTextureManager().getTexture(getTexture()), parentGui.getX() + x, parentGui.getY() + y, null);
+			g.drawImage(parentGui.anno.getTextureManager().getTexture(getTexture()), parentGui.getX() + x, parentGui.getY() + y,width,height, null);
 		}
 		else
 		{
@@ -128,7 +129,7 @@ public class GuiButton extends ActionObject
 	}
 
 	/**
-	 * Setzt die Textur, die angezeigt werden soll, wenn die Maus über dem Gui Button ist..
+	 * Setzt die Textur, die angezeigt werden soll, wenn die Maus ï¿½ber dem Gui Button ist..
 	 * 
 	 * @param texture
 	 *            der Pfad zur Textur.
