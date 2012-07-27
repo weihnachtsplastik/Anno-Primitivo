@@ -21,6 +21,7 @@ public class GuiInterface extends Gui
 		if(guiButton.isEnabled() && guiButton.getID() == 0)
 		{
 			anno.getGuiManager().openGui(new GuiBuiltMenu());
+			anno.getCursor().setCursorID(255);
 			return true;
 		}
 		return false;

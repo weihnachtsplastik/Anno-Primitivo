@@ -8,6 +8,8 @@ import java.awt.Image;
 
 public class GuiBuiltMenu extends Gui
 {
+
+	
 	public GuiBuiltMenu()
 	{
 		super();
@@ -15,11 +17,38 @@ public class GuiBuiltMenu extends Gui
 		y = 256;
 		width = 192;
 		height = 288;
+		
 	}
 
 	@Override
+	public void onGuiOpen(){
+		controlList.clear();
+		GuiButton way = new GuiButton(0,"/block_icons/way_icons.png",x,y,32,32,this);
+		way.setHoverTexture("/block_icons/way_icons.png");
+		way.setDisabledTexture("/block_icons/way_icons.png");
+		way.useTextures();
+		controlList.add(way);
+		
+		way.setEnabled(true);
+	}
+	
+	@Override
+	public boolean onGuiButtonClick(GuiButton way)
+	{
+		if(way.isEnabled() && way.getID() == 0)
+		{
+			anno.getCursor().setCursorID(101);
+			System.out.println("der Weg wurde aktiviert");
+			return true;
+		}
+		return false;
+	}
+	
+	@Override
 	public boolean onClick(int x, int y)
 	{
+		
+		
 		if(!isOnGui(x, y))
 		{
 			close();
@@ -37,6 +66,5 @@ public class GuiBuiltMenu extends Gui
 		g.fillRect(getX(), getY(), width, height);
 		g.setFont(new Font("Arial",2,20));
 		g.setColor(Color.blue);
-		g.drawImage(texMngr.getTexture("/block_icons/weg_Icon.png"),x,y,32,32,null);
 	}
 }

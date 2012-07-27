@@ -46,13 +46,15 @@ public class GameCursor
 		y -= y % (32*zoom);
 		
 		
-			switch(CursorID){
+		switch(CursorID){
 			case 101:
 				g.drawImage(anno.getTextureManager().getTexture(CursorID),x,y,(int)(32*zoom),(int)(32*zoom),null);
 			}
-			
-			
-		
+
+	}
+	
+	public void setCursorID(int id){
+		CursorID = id;
 	}
 
 	
