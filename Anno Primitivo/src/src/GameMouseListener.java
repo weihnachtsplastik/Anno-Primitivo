@@ -30,7 +30,10 @@ public class GameMouseListener implements MouseListener
 		{
 			int x = event.getX();
 			int y = event.getY();
-
+			if(anno.getOS() == EnumOS.windows){
+				x /= 32;
+				y /= 32;
+			}
 			anno.getGuiManager().fireClick(x, y);
 		}
 	}

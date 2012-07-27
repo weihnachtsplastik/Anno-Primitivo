@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+import src.EnumOS;
 import src.GameCursor;
 import src.GamePanel;
 import src.GameWindow;
@@ -22,6 +23,7 @@ public class Anno
 	private TextureManager texMngr;
 	private World world;
 	private GameCursor cursor;
+	private static EnumOS os;
 
 	public Anno()
 	{
@@ -30,7 +32,11 @@ public class Anno
 		paused = false;
 		world = new World(this);
 		texMngr = new TextureManager();
-		gameWindow = new GameWindow(this, 800, 600, "Anno Primitivo");
+		if(os == EnumOS.linux){
+			gameWindow = new GameWindow(this, 800, 600, "Anno Primitivo (Linux)");
+		}else{
+			gameWindow = new GameWindow(this, 806, 604, "Anno Primitivo (Windows)");
+		}
 		gamePanel = new GamePanel();
 		gameWindow.add(gamePanel);
 		guiMngr = new GuiManager(this);
@@ -194,6 +200,14 @@ public class Anno
 	
 	public static void main(String[] args)
 	{
+		if (isWindows()) {
+			os = EnumOS.windows;
+		} else if (isUnix()) {
+			os = EnumOS.linux;
+		} else {
+			System.out.println("Your OS is not support!!");
+		}
+		
 		Anno anno = new Anno();
 		anno.startGame();
 	}
@@ -202,5 +216,30 @@ public class Anno
 	{
 		return cursor;
 	}
+	
+	public EnumOS getOS(){
+		return os;
+	}
+	
+	// AB HIER NUR ZU SCANNEN DES BETRIEBSSYSTEMS
+	
+	public static boolean isWindows() {
+		 
+		String os = System.getProperty("os.name").toLowerCase();
+		// windows
+		return (os.indexOf("win") >= 0);
+ 
+	}
+ 
+	
+ 
+	public static boolean isUnix() {
+ 
+		String os = System.getProperty("os.name").toLowerCase();
+		// linux or unix
+		return (os.indexOf("nix") >= 0 || os.indexOf("nux") >= 0);
+ 
+	}
+ 
 
 }
