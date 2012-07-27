@@ -49,6 +49,8 @@ public class GameCursor
 		switch(CursorID){
 			case 101:
 				g.drawImage(anno.getTextureManager().getTexture(CursorID),x,y,(int)(32*zoom),(int)(32*zoom),null);break;
+			case 102:
+				g.drawImage(anno.getTextureManager().getTexture(CursorID),x,y,(int)(32*zoom*2),(int)(32*zoom*2),null);break;
 			}
 
 	}

@@ -14,12 +14,14 @@ public class Anno
 {	
 	private Thread threadAnimate;
 	private Thread threadUpdate;
+	private Thread threadSound;
 	private GamePanel gamePanel;
 	private GameWindow gameWindow;
 	private GuiManager guiMngr;
 	private boolean paused;
 	private boolean animRunning;
 	private boolean updtRunning;
+	private boolean soundRunning;
 	private TextureManager texMngr;
 	private World world;
 	private GameCursor cursor;
@@ -29,6 +31,7 @@ public class Anno
 	{
 		animRunning = false;
 		updtRunning = false;
+		soundRunning = false;
 		paused = false;
 		world = new World(this);
 		texMngr = new TextureManager();
@@ -177,6 +180,11 @@ public class Anno
 		{
 			threadAnimate = new Thread(new AnnoRunnableAnimate(this));
 			threadAnimate.start();
+		}
+		if(threadSound == null || !soundRunning)
+		{
+			threadSound = new Thread(new AnnoRunnableSound(this));
+			threadSound.start();
 		}
 		world.genWorld();
 	}

@@ -28,7 +28,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Schließt die Gui.
+	 * Schlieï¿½t die Gui.
 	 */
 	public void close()
 	{
@@ -44,9 +44,9 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die Höhe der Gui zurück.
+	 * Gibt die Hï¿½he der Gui zurï¿½ck.
 	 * 
-	 * @return Die Höhe der Gui.
+	 * @return Die Hï¿½he der Gui.
 	 */
 	public int getHeight()
 	{
@@ -54,7 +54,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die Breite der Gui zurück.
+	 * Gibt die Breite der Gui zurï¿½ck.
 	 * 
 	 * @return Die Breite der Gui.
 	 */
@@ -64,7 +64,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die X-Position auf dem Fenster zurück.
+	 * Gibt die X-Position auf dem Fenster zurï¿½ck.
 	 * 
 	 * @return Die X-Position der Gui.
 	 */
@@ -74,7 +74,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die X-Position auf dem Fenster plus die Breite der Gui zurück.
+	 * Gibt die X-Position auf dem Fenster plus die Breite der Gui zurï¿½ck.
 	 * 
 	 * @return Die X-Position des 2. Punkts der Gui.
 	 */
@@ -84,7 +84,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die Y-Position auf dem Fenster zurück.
+	 * Gibt die Y-Position auf dem Fenster zurï¿½ck.
 	 * 
 	 * @return Die Y-Position der Gui.
 	 */
@@ -94,7 +94,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt die Y-Position auf dem Fenster plus die Höhe der Gui zurück.
+	 * Gibt die Y-Position auf dem Fenster plus die Hï¿½he der Gui zurï¿½ck.
 	 * 
 	 * @return Die Y-Position des 2. Punkts der Gui.
 	 */
@@ -106,7 +106,7 @@ public abstract class Gui
 	/**
 	 * Gibt an, ob das Tippen einer Taste an die Gui weitergeleitet werden soll und die Standarttasten deaktiviert werden sollen.
 	 * 
-	 * @return Ob ein "onKeyType" Event ausgelöst werden soll.
+	 * @return Ob ein "onKeyType" Event ausgelï¿½st werden soll.
 	 */
 	public boolean isKeyEventEnabled()
 	{
@@ -114,7 +114,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Überprüft, ob die angegebene Position auf der Gui liegt.
+	 * ï¿½berprï¿½ft, ob die angegebene Position auf der Gui liegt.
 	 * 
 	 * @param x
 	 *            die X-Position
@@ -138,7 +138,7 @@ public abstract class Gui
 	 *            die X-Position auf der Gui
 	 * @param y
 	 *            die Y-Position auf der Gui
-	 * @return ob eine Aktion durchgeführt wurde
+	 * @return ob eine Aktion durchgefï¿½hrt wurde
 	 */
 	public boolean onClick(int x, int y)
 	{
@@ -160,9 +160,9 @@ public abstract class Gui
 	 * 
 	 * @param id
 	 *            die ID des Guibuttons
-	 * @return ob eine Aktion durchgeführt wurde
+	 * @return ob eine Aktion durchgefï¿½hrt wurde
 	 */
-	public boolean onGuiButtonClick(GuiButton guiButton)
+	public boolean onGuiButtonClick(GuiButton buttons )
 	{
 		return false;
 	}
@@ -176,7 +176,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Wird aufgerufen, wenn die Gui geöffnet wird.
+	 * Wird aufgerufen, wenn die Gui geï¿½ffnet wird.
 	 */
 	public void onGuiOpen()
 	{
@@ -184,13 +184,13 @@ public abstract class Gui
 	}
 
 	/**
-	 * Wird aufgerufen, wenn eine Taste gedrückt wird.
+	 * Wird aufgerufen, wenn eine Taste gedrï¿½ckt wird.
 	 * 
 	 * @param key
-	 *            die gedrückte Taste
+	 *            die gedrï¿½ckte Taste
 	 * @param id
 	 *            die ID der Taste
-	 * @return ob eine Aktion durchgeführt wurde
+	 * @return ob eine Aktion durchgefï¿½hrt wurde
 	 */
 	public boolean onKeyType(char key, int id)
 	{
@@ -229,7 +229,7 @@ public abstract class Gui
 	}
 
 	/**
-	 * Gibt an, ob das Spiel durch das Öffnen der Gui unterbrochen werden soll.
+	 * Gibt an, ob das Spiel durch das ï¿½ffnen der Gui unterbrochen werden soll.
 	 * 
 	 * @return Ob das Spiel unterbrochen werden soll.
 	 */
@@ -239,7 +239,7 @@ public abstract class Gui
 	}
 	
 	/**
-	 * Setzt anno auf den übergebenen wert.
+	 * Setzt anno auf den ï¿½bergebenen wert.
 	 * @param anno das neue Anno
 	 */
 	public void setAnno(Anno anno)

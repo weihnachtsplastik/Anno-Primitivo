@@ -4,7 +4,7 @@ public class BlockForest extends Block
 {
 	public BlockForest()
 	{
-		super(1);
+		super(1,1,1);
 	}
 	
 	public int getDropID()

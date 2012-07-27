@@ -6,8 +6,10 @@
 1	forrest
 2	rock
 100	base
+101 way
 
+255 nothing (needed by the cursor)
 #Item ID's:
-0	money
-1	wood
-2	stone
+256	money
+257	wood
+258	stone

@@ -24,7 +24,7 @@ public class World
 	}
 
 	/**
-	 * Gibt den Entity Manager zurück.<br>
+	 * Gibt den Entity Manager zurï¿½ck.<br>
 	 * Dieser verwaltet alle Entitys.
 	 */
 	public EntityManager getEntityManager()
@@ -68,6 +68,10 @@ public class World
 			gui.setProgressBarPosition(i);
 		}
 		setBlock(12, 8, new BlockBase());
+			setBlock(13,8,new BlockEmpty());
+			setBlock(12,9,new BlockEmpty());
+			setBlock(13,9,new BlockEmpty());
+			
 		EntityLumberjack entity = new EntityLumberjack(1);
 		entity.setPosition(12.0F, 8.0F);
 		entityMngr.addEntity(entity);
@@ -76,7 +80,7 @@ public class World
 	}
 
 	/**
-	 * Gibt den Block an der angegebenen Position zurück.
+	 * Gibt den Block an der angegebenen Position zurï¿½ck.
 	 * 
 	 * @param x
 	 *            die X-Position
@@ -90,7 +94,7 @@ public class World
 	}
 
 	/**
-	 * Gibt die ID des Blocks an der angegebenen Position zurück.
+	 * Gibt die ID des Blocks an der angegebenen Position zurï¿½ck.
 	 * 
 	 * @param x
 	 *            die X-Position
@@ -138,7 +142,7 @@ public class World
 	}
 
 	/**
-	 * Gibt die WorldData zurück.
+	 * Gibt die WorldData zurï¿½ck.
 	 * 
 	 * @return Die WorldData.
 	 */

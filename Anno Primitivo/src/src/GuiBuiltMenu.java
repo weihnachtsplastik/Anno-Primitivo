@@ -22,21 +22,35 @@ public class GuiBuiltMenu extends Gui
 
 	@Override
 	public void onGuiOpen(){
-		controlList.clear();
-		GuiButton way = new GuiButton(0,"/block_icons/weg_Icon.png",10,10,32,32,this);
-		way.useTextures();
-		controlList.add(way);
+		GuiButton button;
 		
-		way.setEnabled(true);
+		controlList.clear();
+		button = new GuiButton(0,"/block_icons/weg_Icon.png",10,10,32,32,this);
+		button.useTextures();
+		controlList.add(button);
+		button.setEnabled(true);
+		
+		button = new GuiButton(1,"/block_icons/Holzfällerhütte.png",50,10,32,32,this);
+		button.useTextures();
+		controlList.add(button);
+		button.setEnabled(true);
+		
+		button.setEnabled(true);
 	}
 	
 	@Override
-	public boolean onGuiButtonClick(GuiButton way)
+	public boolean onGuiButtonClick(GuiButton button)
 	{
-		if(way.isEnabled() && way.getID() == 0)
+		if(button.isEnabled() && button.getID() == 0)
 		{
 			anno.getCursor().setCursorID(101);
 			System.out.println("der Weg wurde aktiviert");
+			return true;
+		}
+		else if(button.isEnabled() && button.getID() == 1)
+		{
+			anno.getCursor().setCursorID(102);
+			System.out.println("die Holzfällerhütte wurde aktiviert");
 			return true;
 		}
 		return false;

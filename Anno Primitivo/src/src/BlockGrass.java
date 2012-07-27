@@ -4,6 +4,6 @@ public class BlockGrass extends Block
 {
 	public BlockGrass()
 	{
-		super(0);
+		super(0,1,1);
 	}
 }

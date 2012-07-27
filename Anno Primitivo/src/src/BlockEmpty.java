@@ -4,6 +4,6 @@ public class BlockEmpty extends Block
 {
 	public BlockEmpty()
 	{
-		super(-1);
+		super(255,1,1);
 	}
 }

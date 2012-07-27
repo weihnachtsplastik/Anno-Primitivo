@@ -31,6 +31,14 @@ public class GuiScreen extends Gui
 			switch(anno.getCursor().getCursorID()){
 				case 101:
 					anno.getWorld().setBlock((int)(x/(32*zoom)),(int)(y/(32*zoom)), new BlockWay());break;
+				case 102:
+					if(checkForReserved((int)(x/(32*zoom)), (int)(y/(32*zoom)), new BlockLumberjackhood())){
+					anno.getWorld().setBlock((int)(x/(32*zoom)),(int)(y/(32*zoom)), new BlockLumberjackhood());
+					anno.getWorld().setBlock((int)(x/(32*zoom)+1),(int)(y/(32*zoom)), new BlockEmpty());
+					anno.getWorld().setBlock((int)(x/(32*zoom)),(int)(y/(32*zoom)+1), new BlockEmpty());
+					anno.getWorld().setBlock((int)(x/(32*zoom)+1),(int)(y/(32*zoom)+1), new BlockEmpty());
+					break;
+					}
 			}
 		}
 		anno.getWorld().onClick(x / 32, y / 32);
@@ -54,7 +62,7 @@ public class GuiScreen extends Gui
 				Block block = anno.getWorld().getBlock(x, y);
 				if(block.getBlockID() != -1)
 				{
-					g.drawImage(anno.getTextureManager().getTexture(block.getBlockID()), (int) (x * 32 * zoom), (int) (y * 32 * zoom), (int) (block.getPixelWidth() * zoom), (int) (block.getPixelHeight() * zoom), null);
+					g.drawImage(anno.getTextureManager().getTexture(block.getBlockID()), (int) (x * 32 * zoom), (int) (y * 32 * zoom),(int)((32 * zoom) * block.getWidth()),(int)(32 * zoom * block.getHeight()), null);
 				}
 			}
 		}
@@ -112,6 +120,14 @@ public class GuiScreen extends Gui
 		catch(IllegalArgumentException exception)
 		{
 		}
+	}
+	
+	public boolean checkForReserved(int x, int y, Block b){
+		if(b instanceof BlockLumberjackhood){
+			if( anno.getWorld().getBlockID(x+1,y)<100  && anno.getWorld().getBlockID(x+1,y+1) < 100 && anno.getWorld().getBlockID(x,y+1)<100) return true; 
+		}
+		
+		return false;
 	}
 	
 	

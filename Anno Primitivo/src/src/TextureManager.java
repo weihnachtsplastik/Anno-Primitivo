@@ -24,6 +24,7 @@ public class TextureManager
 		mapID.put(2, "/blocks/rock.png");
 		mapID.put(100, "/blocks/base.png");
 		mapID.put(101, "/blocks/way.png");
+		mapID.put(102, "/blocks/holzfällerhütte.png");
 		
 		mapID.put(155, "/blocks/nothing");
 		//Items

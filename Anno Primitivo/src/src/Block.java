@@ -3,14 +3,18 @@ package src;
 public class Block
 {
 	protected int id;
+	protected int width;
+	protected int height;
 
-	public Block(int id)
+	public Block(int id,int width,int height)
 	{
 		this.id = id;
+		this.width = width;
+		this.height = height;
 	}
 
 	/**
-	 * Gibt die ID des Blocks zurück.
+	 * Gibt die ID des Blocks zurï¿½ck.
 	 */
 	public int getBlockID()
 	{
@@ -18,7 +22,7 @@ public class Block
 	}
 
 	/**
-	 * Gibt die ID zurück, die gedropt werden soll, wenn der Block abgebaut wird.
+	 * Gibt die ID zurï¿½ck, die gedropt werden soll, wenn der Block abgebaut wird.
 	 */
 	public int getDropID()
 	{
@@ -26,7 +30,7 @@ public class Block
 	}
 
 	/**
-	 * Gibt die Höhe in Pixeln zurück.
+	 * Gibt die Hï¿½he in Pixeln zurï¿½ck.
 	 */
 	public int getPixelHeight()
 	{
@@ -34,7 +38,7 @@ public class Block
 	}
 
 	/**
-	 * Gibt die Breite in Pixeln zurück.
+	 * Gibt die Breite in Pixeln zurï¿½ck.
 	 */
 	public int getPixelWidth()
 	{
@@ -42,7 +46,7 @@ public class Block
 	}
 
 	/**
-	 * Wird ausgelöst, wenn auf den Block geklickt wird.
+	 * Wird ausgelï¿½st, wenn auf den Block geklickt wird.
 	 * 
 	 * @param x
 	 *            die X-Position des Blocks
@@ -54,5 +58,13 @@ public class Block
 	public void onClick(int x, int y, World world)
 	{
 
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
 	}
 }
