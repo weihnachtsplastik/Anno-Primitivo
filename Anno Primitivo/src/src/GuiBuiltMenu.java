@@ -1,7 +1,10 @@
 package src;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
+
 
 public class GuiBuiltMenu extends Gui
 {
@@ -27,7 +30,13 @@ public class GuiBuiltMenu extends Gui
 	@Override
 	public void paint(Graphics g)
 	{
+		TextureManager texMngr = anno.getTextureManager();
+		World world = anno.getWorld();
+		
 		g.setColor(new Color(0.0F, 0.0F, 0.0F, 0.75F));
 		g.fillRect(getX(), getY(), width, height);
+		g.setFont(new Font("Arial",2,20));
+		g.setColor(Color.blue);
+		g.drawImage(texMngr.getTexture("/block_icons/weg_Icon.png"),x,y,32,32,null);
 	}
 }

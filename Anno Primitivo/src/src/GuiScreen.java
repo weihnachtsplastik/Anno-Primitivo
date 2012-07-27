@@ -6,16 +6,18 @@ public class GuiScreen extends Gui
 {
 	private float zoom;
 
+
 	public GuiScreen()
 	{
 		super();
 		x = 0;
 		y = 0;
 		zoom = 0.5F;
+	
 	}
 
 	/**
-	 * Gibt den aktuellen Zoom Faktor zurück.
+	 * Gibt den aktuellen Zoom Faktor zurï¿½ck.
 	 */
 	public float getZoom()
 	{
@@ -51,15 +53,16 @@ public class GuiScreen extends Gui
 			}
 		}
 		anno.getWorld().getEntityManager().paintEntitys(g, zoom);
+		anno.getCursor().paintCursor(g, zoom);
 	}
 
 	/**
-	 * Setzt den Zoom auf die Welt. Dieser Faktor ist dafür zuständig, dass man rein und raus zoomen kann. Er muss zwischen 0.25 und 1.0 liegen!
+	 * Setzt den Zoom auf die Welt. Dieser Faktor ist dafï¿½r zustï¿½ndig, dass man rein und raus zoomen kann. Er muss zwischen 0.25 und 1.0 liegen!
 	 * 
 	 * @param zoom
 	 *            der Zoom Faktor
 	 * @throws IllegalArgumentException
-	 *             Wenn der Zoom Faktor kleiner als 0.25 oder größer als 1.0 ist.
+	 *             Wenn der Zoom Faktor kleiner als 0.25 oder grï¿½ï¿½er als 1.0 ist.
 	 */
 	public void setZoom(float zoom) throws IllegalArgumentException
 	{
@@ -78,7 +81,7 @@ public class GuiScreen extends Gui
 	}
 
 	/**
-	 * Erhöht den Zoom Faktor. Da dieser kleiner als 1 ist, vergrößert sich dadurch das Bild.
+	 * Erhï¿½ht den Zoom Faktor. Da dieser kleiner als 1 ist, vergrï¿½ï¿½ert sich dadurch das Bild.
 	 */
 	public void zoomIn()
 	{
@@ -104,4 +107,5 @@ public class GuiScreen extends Gui
 		{
 		}
 	}
+	
 }

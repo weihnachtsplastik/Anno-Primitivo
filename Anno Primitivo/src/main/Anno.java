@@ -1,6 +1,7 @@
 package main;
 
 import java.awt.Graphics;
+import src.GameCursor;
 import src.GamePanel;
 import src.GameWindow;
 import src.GuiManager;
@@ -20,6 +21,7 @@ public class Anno
 	private boolean updtRunning;
 	private TextureManager texMngr;
 	private World world;
+	private GameCursor cursor;
 
 	public Anno()
 	{
@@ -33,6 +35,7 @@ public class Anno
 		gameWindow.add(gamePanel);
 		guiMngr = new GuiManager(this);
 		guiMngr.openGui(new GuiRender());
+		cursor = new GameCursor(this);
 	}
 
 	private void gameRender()
@@ -194,4 +197,10 @@ public class Anno
 		Anno anno = new Anno();
 		anno.startGame();
 	}
+
+	public GameCursor getCursor()
+	{
+		return cursor;
+	}
+
 }

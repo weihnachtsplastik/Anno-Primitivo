@@ -18,12 +18,14 @@ public class TextureManager
 	
 	private void fillMap()
 	{
-		//Blöcke
+		//Blï¿½cke
 		mapID.put(0, "/blocks/grass.png");
 		mapID.put(1, "/blocks/forest.png");
 		mapID.put(2, "/blocks/rock.png");
 		mapID.put(100, "/blocks/base.png");
+		mapID.put(101, "/blocks/way.png");
 		
+		mapID.put(155, "/blocks/nothing");
 		//Items
 		mapID.put(256, "/items/money.png");
 		mapID.put(257, "/items/wood.png");
@@ -31,7 +33,7 @@ public class TextureManager
 	}
 
 	/**
-	 * Gibt die zur ID gehörige Textur zurück.
+	 * Gibt die zur ID gehï¿½rige Textur zurï¿½ck.
 	 * 
 	 * @param id
 	 *            die ID der Textur
@@ -42,14 +44,14 @@ public class TextureManager
 	}
 
 	/**
-	 * Gibt das angegebene Bild als Textur zurück.
+	 * Gibt das angegebene Bild als Textur zurï¿½ck.
 	 * 
 	 * @param src
 	 *            der Pfad zum Bild
 	 */
 	public Image getTexture(String src)
 	{
-		if(!mapTextures.containsKey(src))
+		if(!mapTextures.containsKey(src) && src != null)
 		{
 			ImageIcon icon = new ImageIcon(getClass().getResource(src));
 			Image img = icon.getImage();
